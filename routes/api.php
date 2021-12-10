@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PdfControlador;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::get('pdfs', [PdfControlador::class, 'index']);
+Route::get('pdfs/{id}', [PdfControlador::class, 'edit']);
+Route::post('pdfs', [PdfControlador::class, 'store']);
+Route::put('pdfs/{id}', [PdfControlador::class, 'update']);
+Route::delete('pdfs/{id}', [PdfControlador::class, 'destroy']);
+Route::get('pdfs/ref/{ref}', [PdfControlador::class, 'obtenerPorRef']);
